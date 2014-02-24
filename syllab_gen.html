@@ -73,29 +73,11 @@
       new Phoneme("m", {consonant: true, vowel: false, place: "bilabial",     manner: "nasal",      voice: true});
       new Phoneme("n", {consonant: true, vowel: false, place: "alveolar",     manner: "nasal",      voice: true});
       new Phoneme("ŋ", {consonant: true, vowel: false, place: "velar",        manner: "nasal",      voice: true});
-    </script>
-    
-    <table id="consonants">
-      <tr id="consonant_header">
-        <th></th>
-      </tr>
-    </table>
-    
-    <script>
-      var ctable = {};
-      for (var place in places) {
-        if (ctable[place] == undefined) {
-          ctable[place] = {};
-        }
-        for (var manner in manners) {
-          var phoneme = manners[manner];
-          if (phoneme.place == place) {
-            ctable[place][manner][phoneme.voice?"voiced":"voiceless"] = phoneme;
-          }
-        }
-      }
-    
-      console.log(ctable);
+      
+      var sC  = ["p",      "t",      "k",      "f", "v", "w", "l", "m", "n"];
+      var  Cw = [          "t", "d", "k", "g"                              ];
+      var  Cr = ["p", "b", "t", "d", "k", "g", "f", "v", "θ", "ʃ"];
+      
     </script>
   </body>
 </html>

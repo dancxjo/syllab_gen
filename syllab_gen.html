@@ -81,7 +81,7 @@
       new Phoneme("ʒ", {consonant: true, vowel: false, place: "postalveolar", manner: "fricative",  voice: true});
       new Phoneme("h", {consonant: true, vowel: false, place: "glottal",      manner: "fricative",  voice: false});
     
-      new Phoneme("w", {consonant: true, vowel: false, place: "labio-velar",  manner: "approximate",voice: true});
+      new Phoneme("w", {consonant: true, vowel: false, place: "labiovelar",   manner: "approximate",voice: true});
       new Phoneme("ɹ", {consonant: true, vowel: false, place: "alveolar",     manner: "approximate",voice: true});
       new Phoneme("l", {consonant: true, vowel: false, place: "alveolar",     manner: "lateral",    voice: true});
       new Phoneme("j", {consonant: true, vowel: false, place: "palatal",      manner: "approximate",voice: true});
@@ -94,6 +94,7 @@
       var  Cw = [          "t", "d", "k", "g"                              ];
       var  Cr = ["p", "b", "t", "d", "k", "g", "f", "v", "θ", "ʃ"];
       var  Cl = ["p", "b",           "k", "g", "f",           "ʃ"];
+      var  Cj = ["p", "b",           "k",      "f", "v",         , "h", "m"]
       
       var onsets = [];
       for (var C in consonants) {
@@ -131,13 +132,33 @@
       
       var codas = [];
       for (var C in consonants) {
+        var p = consonants[C];
         if (C != "h") {
           codas.push(C);
+        }
+        if (p.attributes.manner != "approximate" && p.attributes.place != "glottal" && p.attributes.place != "lateral") {
+          codas.push("l" + C);
+          if (p.attributes.place == "labiodental") {
+            codas.push("m" + C);
+          } else if (p.attributes.place == "velar") {
+            codas.push("ŋ" + C);
+          } else {
+            codas.push("n" + C);
+          }
         }
         
       }
       
-      console.log(onsets);
+      var rhymes = [];
+      for (var iN in nuclei) {
+        var N = nuclei[iN];
+        for (var iC in codas) {
+          var C = codas[iC];
+          rhymes.push(N + C);
+        }
+      }
+      
+      console.log(rhymes);
     </script>
   </body>
 </html>

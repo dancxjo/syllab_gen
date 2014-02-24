@@ -140,7 +140,8 @@
           if (p.attributes.manner != "approximate" && p.attributes.place != "glottal" && p.attributes.place != "lateral") {
             codas.push("l" + C);
             if (p.attributes.place.indexOf("labi") > -1) {
-              codas.push("m" + C);
+              if (!p.attributes.voice)
+                codas.push("m" + C);
             } else if (p.attributes.place == "velar") {
               codas.push("ŋ" + C);
             } else {

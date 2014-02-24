@@ -100,16 +100,27 @@
         
         if (Cw.contains(C)) {
           onsets.push(C + "w");
+          if (sC.contains(C)) {
+            onsets.push("s" + C + "w");
+          }
         }
         
         if (Cr.contains(C)) {
           onsets.push(C + "r");
+          if (sC.contains(C)) {
+            onsets.push("s" + C + "r");
+          }
         }
         
         if (Cl.contains(C)) {
           onsets.push(C + "l");
+          if (sC.contains(C)) {
+            onsets.push("s" + C + "l");
+          }
         }
       }
+      
+      // N.B. onsets does not contain /C+j(?=u)/ 
       
       console.log(onsets);
     </script>

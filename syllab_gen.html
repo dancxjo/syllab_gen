@@ -88,10 +88,22 @@
     
     <script>
       var chrow = document.getElementById("consonant_header");
+      var ctable = document.getElementById("consonants");
       for (var place in places) {
         var th = document.createElement("th");
         chrow.appendChild(th);
         th.innerHTML = place;
+        for (var manner in manners) {
+          var phoneme = manners[manner];
+          if (phoneme.place == place) {
+            var row = document.getElementById("ch_"+manner);
+            if (row == undefined) {
+              row = ctable.insertRow(-1);
+              row.setAttribute("id", "ch_"+manner);
+              row.insertCell(-1).innerHTML = manner;
+            }
+          }
+        }
       }
     </script>
   </body>

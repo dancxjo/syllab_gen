@@ -92,7 +92,7 @@
           var phoneme = manners[manner];
           if (phoneme.place == place) {
             var row = document.getElementById("ch_"+manner);
-            if (row == undefined) {
+            if (!row) {
               row = ctable.insertRow(-1);
               row.setAttribute("id", "ch_"+manner);
               row.insertCell(-1).innerHTML = manner;

@@ -82,24 +82,20 @@
     </table>
     
     <script>
-      var chrow = document.getElementById("consonant_header");
-      var ctable = document.getElementById("consonants");
+      var ctable = {};
       for (var place in places) {
-        var th = document.createElement("th");
-        chrow.appendChild(th);
-        th.innerHTML = place;
+        if (ctable[place] == undefined) {
+          ctable[place] = {};
+        }
         for (var manner in manners) {
           var phoneme = manners[manner];
           if (phoneme.place == place) {
-            var row = document.getElementById("ch_"+manner);
-            if (!row) {
-              row = ctable.insertRow(-1);
-              row.setAttribute("id", "ch_"+manner);
-              row.insertCell(-1).innerHTML = manner;
-            }
+            ctable[place][manner][phoneme.voice?"voiced":"voiceless"] = phoneme;
           }
         }
       }
+    
+      console.log(ctable);
     </script>
   </body>
 </html>

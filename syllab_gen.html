@@ -71,8 +71,8 @@
       new Phoneme("g", {consonant: true, vowel: false, place: "velar",        manner: "plosive",    voice: true});
       new Phoneme("ʔ", {consonant: true, vowel: false, place: "glottal",      manner: "plosive",    voice: false});
       
-      new Phoneme("f", {consonant: true, vowel: false, place: "bilabial",     manner: "fricative",  voice: false});
-      new Phoneme("v", {consonant: true, vowel: false, place: "bilabial",     manner: "fricative",  voice: true});
+      new Phoneme("f", {consonant: true, vowel: false, place: "labiodental",  manner: "fricative",  voice: false});
+      new Phoneme("v", {consonant: true, vowel: false, place: "labiodental",  manner: "fricative",  voice: true});
       new Phoneme("θ", {consonant: true, vowel: false, place: "interdental",  manner: "fricative",  voice: false});
       new Phoneme("ð", {consonant: true, vowel: false, place: "interdental",  manner: "fricative",  voice: true});
       new Phoneme("s", {consonant: true, vowel: false, place: "alveolar",     manner: "fricative",  voice: false});
@@ -139,7 +139,7 @@
           }
           if (p.attributes.manner != "approximate" && p.attributes.place != "glottal" && p.attributes.place != "lateral") {
             codas.push("l" + C);
-            if (p.attributes.place == "labiodental") {
+            if (p.attributes.place.indexOf("labi") > -1) {
               codas.push("m" + C);
             } else if (p.attributes.place == "velar") {
               codas.push("ŋ" + C);

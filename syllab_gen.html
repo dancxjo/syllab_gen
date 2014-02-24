@@ -12,10 +12,40 @@
   <body>
     <script>
       var phonemes = {};
+      var vowels = {};
+      var consonants = {};
+      var places = {};
+      var manners = {};
+      var voiced = {};
+      var voiceless = {};
+      
       function Phoneme(ipa, attributes) {
         this.ipa = ipa;
         this.attributes = attributes;
         phonemes[ipa] = this;
+        if (attributes.vowel) {
+          vowels[ipa] = this;
+        }
+        
+        if (attributes.consonant) {
+          consonants[ipa] = this;
+          if (attributes.voice) {
+            voiced[ipa] = this;
+          } else {
+            voiceless[ipa] = this;
+          }
+          
+          if (places[attributes.place] == undefined) {
+            places[attributes.place] = {};
+          }
+          
+          if (manners[attributes.manner] == undefined) {
+            manners[attributes.manner] = {};
+          }
+          
+          places[attributes.place][ipa] = this;
+          manners[attributes.manner][ipa] = this;
+        }
       }
       
       // ɑɔəɚɝɪʌʊ

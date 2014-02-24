@@ -6,6 +6,15 @@
   </head>
   <body>
     <script>
+      Array.prototype.contains = function(obj) {
+        var i = this.length;
+        while (i--) {
+            if (this[i] === obj) {
+                return true;
+            }
+        }
+        return false;
+      }
       var phonemes = {};
       var vowels = {};
       var consonants = {};
@@ -77,7 +86,32 @@
       var sC  = ["p",      "t",      "k",      "f", "v", "w", "l", "m", "n"];
       var  Cw = [          "t", "d", "k", "g"                              ];
       var  Cr = ["p", "b", "t", "d", "k", "g", "f", "v", "θ", "ʃ"];
+      var  Cl = ["p", "b",           "k", "g", "f",           "ʃ"];
       
+      var onsets = [];
+      for (var C in consonants) {
+        if (C != "ŋ") {
+          onsets.push(C);
+        }
+        
+        if (sC.contains(C)) {
+          onsets.push("s" + C);
+        }
+        
+        if (Cw.contains(C)) {
+          onsets.push(C + "w");
+        }
+        
+        if (Cr.contains(C)) {
+          onsets.push(C + "r");
+        }
+        
+        if (Cl.contains(C)) {
+          onsets.push(C + "l");
+        }
+      }
+      
+      console.log(onsets);
     </script>
   </body>
 </html>

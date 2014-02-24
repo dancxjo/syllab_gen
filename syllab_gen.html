@@ -78,7 +78,21 @@
       new Phoneme("m", {consonant: true; vowel: false; place: "bilabial";     manner: "nasal";      voice: true});
       new Phoneme("n", {consonant: true; vowel: false; place: "alveolar";     manner: "nasal";      voice: true});
       new Phoneme("ŋ", {consonant: true; vowel: false; place: "velar";        manner: "nasal";      voice: true});
-      
+    </script>
+    
+    <table id="consonants">
+      <tr id="consonant_header">
+        <th></th>
+      </tr>
+    </table>
+    
+    <script>
+      var chrow = document.getElementById("consonant_header");
+      for (var place in places) {
+        var th = document.createElement("th");
+        chrow.appendChild(th);
+        th.innerHTML = place;
+      }
     </script>
   </body>
 </html>

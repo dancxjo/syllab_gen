@@ -133,7 +133,7 @@
       var codas = [];
       for (var C in consonants) {
         var p = consonants[C];
-        if (typeof(p) == "Object") {
+        if (typeof(p) != "Object") {
           if (C != "h" && p.attribute.manner != "approximate") {
             codas.push(C);
           }
